@@ -14,9 +14,9 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
+  Text, // 중요 span이랑 비슷
   useColorScheme,
-  View,
+  View, // 중요 div랑 비슷
 } from 'react-native';
 
 import {
