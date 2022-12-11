@@ -4,7 +4,7 @@ import {
   createNativeStackNavigator,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import {Text, TouchableHighlight, View} from 'react-native';
+import {Pressable, Text, TouchableHighlight, View} from 'react-native';
 import {useCallback} from 'react';
 type RootStackParamList = {
   Home: undefined;
@@ -18,11 +18,34 @@ function HomeScreen({navigation}: HomeScreenProps) {
     navigation.navigate('Details');
   }, [navigation]);
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <TouchableHighlight onPress={onClick}>
-        <Text>Home Screen</Text>
-      </TouchableHighlight>
-    </View>
+    <>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'yellow',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+        }}>
+        <Pressable
+          style={{
+            paddingHorizontal: 40,
+            paddingVertical: 20,
+            backgroundColor: 'blue',
+          }}
+          onPress={onClick}>
+          <Text style={{color: 'white'}}>Home Screen</Text>
+        </Pressable>
+      </View>
+      <View
+        style={{
+          flex: 2,
+          backgroundColor: 'orange',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <Text>Second</Text>
+      </View>
+    </>
   );
 }
 function DetailsScreen({navigation}: DetailsScreenProps) {
@@ -45,7 +68,7 @@ function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Overview'}}
+          options={{title: '홈화면'}}
         />
         <Stack.Screen name="Details">
           {props => <DetailsScreen {...props} />}
